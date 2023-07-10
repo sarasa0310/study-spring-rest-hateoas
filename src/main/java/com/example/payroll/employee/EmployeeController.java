@@ -1,5 +1,6 @@
-package com.example.payroll;
+package com.example.payroll.employee;
 
+import com.example.payroll.exception.EmployeeNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -59,10 +60,7 @@ public class EmployeeController {
                     employee.setRole(newEmployee.getRole());
                     return repository.save(employee);
                 })
-                .orElseGet(() -> {
-                    newEmployee.setId(id);
-                    return repository.save(newEmployee);
-                });
+                .orElseGet(() -> repository.save(newEmployee));
 
         EntityModel<Employee> entityModel =
                 assembler.toModel(replacedEmployee);

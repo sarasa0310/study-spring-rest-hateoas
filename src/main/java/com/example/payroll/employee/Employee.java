@@ -1,4 +1,4 @@
-package com.example.payroll;
+package com.example.payroll.employee;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +7,6 @@ import lombok.*;
 
 @Entity
 @Getter
-@Setter
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -18,6 +17,7 @@ public class Employee {
     private Long id;
     private String firstName;
     private String lastName;
+    @Setter
     private String role;
 
     public Employee(String firstName, String lastName, String role) {
